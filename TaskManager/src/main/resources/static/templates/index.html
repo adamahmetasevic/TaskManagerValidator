@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <link rel="stylesheet" href="./css/styles.css"> 
+</head>
+<body>
+    <header>
+        <h1>Task Management Application</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}" href="/">Home</a></li>
+                <li><a th:href="@{/tasklist}" href="/tasklist">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome to Task Management</h2>
+            <p>This is the homepage of the Task Management application.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Task Management Application</p>
+    </footer>
+</body>
+</html>

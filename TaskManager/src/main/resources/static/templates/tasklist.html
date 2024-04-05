@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Management - Task List</title>
+    <link rel="stylesheet" href="./css/styles.css"> 
+</head>
+<body>
+    <section>
+        <h2>Task List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>	
+            </thead>
+            <tbody>
+                <!-- Check if tasks list is empty -->
+                <th:block th:if="${#lists.isEmpty(tasks)}">
+                    <tr>
+                        <td colspan="4">No tasks found.</td>
+                    </tr>
+                </th:block>
+                <!-- Iterate over tasks and display them -->
+                <th:block th:each="task : ${tasks}" th:unless="${#lists.isEmpty(tasks)}">
+                    <tr>
+                        <td th:text="${task.id}">1</td>
+                        <td th:text="${task.title}">Task 1</td>
+                        <td th:text="${task.description}">Description of Task 1</td>
+                        <td>
+                            <a th:href="@{/edit-task/{id}(id=${task.id})}">Edit</a> |
+                            <form th:action="@{/delete-task/{id}(id=${task.id})}" method="post">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <a th:href="@{/add-task}">Add New Task</a>
+    </section>
+</body>
+</html>

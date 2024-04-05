@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Management - Add Task</title>
+    <link rel="stylesheet" href="./css/styles.css"> 
+    
+    <script>
+        function validateForm() {
+            var title = document.getElementById('title').value;
+            var description = document.getElementById('description').value;
+
+            if (title.trim() === '' || description.trim() === '') {
+                alert('Title and Description cannot be empty');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <h2>Add Task</h2>
+        <form action="#" th:action="@{/save-task}" th:object="${task}" method="post" onsubmit="return validateForm()">
+            <label for="title">Title:</label>
+            <input type="text" id="title" th:field="*{title}">
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}"></textarea>
+            <button type="submit">Add Task</button>
+        </form>
+    </section>
+</body>
+</html>
